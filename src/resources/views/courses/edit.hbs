@@ -1,0 +1,31 @@
+<div class="mt-4">
+    <h1>update ban ghi moi course</h1>
+    <div class="row">
+        <div class="col-lg-12">
+            <form method="POST" action="/courses/{{course._id}}?_method=PUT">
+                <div class="mb-3 form-group">
+                    <label for="name" class="form-label">Name Course</label>
+                <input type="text" class="form-control" name="name" id="name" value="{{course.name}}">
+                    
+                </div>
+                <div class="mb-3 form-group">
+                    <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" name="description" id="description" value="{{course.description}}">
+                    
+                </div>
+                <div class="mb-3 form-group">
+                    <label for="videoId" class="form-label">Video Id</label>
+                <input type="text" class="form-control" name="videoId" id="videoId" value="{{course.videoId}}">
+                    
+                </div>
+                <div class="mb-3 form-group">
+                    <label for="level" class="form-label">Level</label>
+                <input type="text" class="form-control" name="level" id="level" value="{{course.level}}">
+                    
+                </div>
+                
+                <button type="submit" class="btn btn-primary" >update Course</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,24 @@
-<h3>Day la trang chu</h3>
+
+<div class="mt-4 container">
+    <div class="row">
+
+        {{#each courses}}
+        
+        <div class="col-sm-12 col-lg-3 my-2">
+            <div class="card">
+                <a href="/courses/{{this._id}}" >
+                    <img src='{{this.image}}' class="card-img-top" alt="picture">
+                    <div class="card-body ">
+                    <h5 class="card-title text-center">{{this.name}}</h5>
+                </a>
+                <p class="card-text">{{this.description}}</p>
+                <a href="#" class="btn btn-primary">Go to Pay</a>
+            </div>
+            </div>
+        </div>
+
+        {{/each}}
+
+    </div>
+</div>
+

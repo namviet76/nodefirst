@@ -4,24 +4,36 @@ const app = express();
 const port = 3000;
 const morgan = require('morgan');
 const handlebars = require('express-handlebars');
+const router = require('./routes');
+const db = require('./config/db')
+const methodOverride = require('method-override')
 
-app.use(morgan('combined'));
+
+
+/* app.use(morgan('combined')); */
 app.use(express.static(path.join(__dirname, 'public')));
+
+//middleware doc body dulueu gui bamg fomr hoac js, htmlrequest, axios, fetch, 
+app.use(express.urlencoded());
+app.use(express.json());
+
+app.use(methodOverride('_method'))
 
 app.engine(
     'hbs',
     handlebars.engine({
         extname: 'hbs',
+        helpers: {
+            sum: (a, b) => a + b
+        }
     }),
 );
-  app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources/views'));
 
-        app.get('/', (req, res) => res.render('home'));
-app.get('/search', (req, res) => res.render('search'));
-app.get('/news', (req, res) => res.render('news'));
-app.get('/news/:slug', (req, res) => res.render('detail'));
-app.get('/contact', (req, res) => res.render('contact'));
+router(app);
+db.connect()
+
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'resources/views'));
 
 app.listen(port, () => {
     console.log(`app listen an port ${port}`);
