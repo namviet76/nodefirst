@@ -1,23 +1,14 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-/* const port = 3000; */
+const port = 3000;
 const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 const router = require('./routes');
 const db = require('./config/db')
 const methodOverride = require('method-override')
-const http = require('http');
-const port = 80;
 
-const hostname = 'render'
-const server = http.createServer((req,res)=>{
-  
-    // Handling Request and Response 
-    res.statusCode=200;
-    res.setHeader('Content-Type', 'text/plain')
-    res.end("Welcome to mein nodejs")
-});
+
 
 
 
@@ -46,11 +37,7 @@ db.connect()
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views'));
 
-/* app.listen(port, () => {
+app.listen(port, () => {
     console.log(`app listen an port ${port}`);
-}); */
-server.listen(port,hostname,()=>{
-  
-    // Callback 
-    console.log(`Server running at http://${hostname}:${port}/`);
 });
+
