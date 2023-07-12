@@ -10,7 +10,9 @@
     "watch": "node-sass --watch src/resources/scss --output src/public/css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines": {"node": ">=18.16.0"},
+  "engines": {
+    "node": ">=18.16.0"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
