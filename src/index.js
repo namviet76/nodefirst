@@ -31,11 +31,13 @@ app.engine(
     }),
 );
 
-router(app);
-db.connect()
+
 
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views'));
+
+db.connect()
+router(app);
 
 app.listen(port, () => {
     console.log(`app listen an port ${port}`);

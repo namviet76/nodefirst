@@ -1,18 +1,31 @@
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://vtp5330:thanhphan76@cluster0.6zftsl6.mongodb.net/?retryWrites=true&w=majority";
+const mongoose = require('mongoose')
+const uri = "mongodb+srv://vtp5330:thanhphan76@cluster0.6zftsl6.mongodb.net/?retryWrites=true&w=majority/thanhdb";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+  
 });
 
 async function connect() {
+
   try {
+        
+    await mongoose.connect("mongodb+srv://vtp5330:thanhphan76@cluster0.6zftsl6.mongodb.net/?retryWrites=true&w=majority/thanhdb",{
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    console.log('connect successfully')
+  } catch (error) {
+    console.log('connect false')
+    
+}
+
+
+  /* try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
     // Send a ping to confirm a successful connection
@@ -21,7 +34,7 @@ async function connect() {
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
-  }
+  } */
 }
 /* run().catch(console.dir); */
 
